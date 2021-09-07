@@ -1,40 +1,57 @@
-$bg: #282c34;
+/* NavBar start */
+$nav-main-color-white: #3DB2FF;
+$nav-second-color-white: #FFFFFFFF;
 
-.App {
+.nav-bar-container {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background: $nav-main-color-white;
+}
+
+.nav-bar .nav-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.nav-bar-container a, .nav-bar-navigation a {
+  text-decoration: none;
+}
+
+.nav-bar-container h1 {
+  font-size: 24px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: normal;
+  color: $nav-second-color-white;
+}
+
+.nav-bar-navigation ul {
+  margin: 1em 0 .5em;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav-bar-navigation li {
+  display: inline;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav-bar-navigation a {
+  display: inline-block;
+  padding: .5em 1.5em;
+  font-family: 'Rubik', sans-serif;
+  font-weight: lighter;
+  color: $nav-second-color-white;
 }
 
-.App-header {
-  background-color: $bg;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.nav-bar-wave {
+  -webkit-transform:rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  display: flex !important;
+  height: 50px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* NavBar end */
