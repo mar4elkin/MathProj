@@ -1,6 +1,15 @@
-/* NavBar start */
+/* css vars start */
 $nav-main-color-white: #3DB2FF;
 $nav-second-color-white: #FFFFFFFF;
+$prev-text-colors: #000000;
+/* css vars end */
+
+/* NavBar start */
+
+.nav-bar-bordered {
+  border-radius: 5px;
+  border: 1px solid $nav-second-color-white;
+}
 
 .nav-bar-container {
   max-width: 100%;
@@ -54,4 +63,77 @@ $nav-second-color-white: #FFFFFFFF;
   height: 50px;
 }
 
+.nav-bar-wave > svg > path {
+  fill: $nav-main-color-white;
+}
+
 /* NavBar end */
+
+/* PreviewPage start */
+
+.prev-page-big-block {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.prev-page-big-block > div h1, p {
+  font-family: 'Rubik', sans-serif;
+  margin: 0px;
+  color: $prev-text-colors;
+}
+
+.prev-page-big-block > div h1 {
+  font-size: 48px;
+  font-weight: normal;
+}
+
+.prev-page-big-block > div p {
+  font-size: 24px;
+  font-weight: lighter;
+  text-align: start;
+}
+
+.prev-page-big-block > img {
+  height: 132px;
+  width: 146px;
+}
+
+.prev-page-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.prev-page-card-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.prev-page-card-block h2, p {
+  font-family: 'Rubik', sans-serif;
+  margin: 0px;
+  text-align: center;
+  color: $prev-text-colors;
+}
+
+.prev-page-card-block > img {
+  width: 100px;
+  height: 100px;
+}
+
+.prev-page-card-block p {
+  font-weight: lighter;
+}
+
+.prev-page-card-block h2 {
+  font-weight: normal;
+}
+
+/* PreviewPage end */
