@@ -7,6 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import PreviewPage from "../Views/PreviewPage";
+import AuthPage from "../Views/AuthPage";
 
 export default class NavBar extends React.Component {
   constructor(props) {
@@ -25,10 +26,10 @@ export default class NavBar extends React.Component {
               <nav className="nav-bar-navigation">
                 <ul className="nav-bar-list">
                   <li>
-                    <Link to="/">Регистрация</Link>
+                    <Link to="/registration">Регистрация</Link>
                   </li>
                   <li>
-                    <Link className="nav-bar-bordered" to="/">Войти</Link>
+                    <Link className="nav-bar-bordered" to="/login">Войти</Link>
                   </li>
                 </ul>
               </nav>
@@ -45,8 +46,14 @@ export default class NavBar extends React.Component {
             />
           </header>
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
               <PreviewPage />
+            </Route>
+            <Route path="/registration">
+              <AuthPage isRegistration={true} />
+            </Route>
+            <Route path="/login">
+              <AuthPage isRegistration={false} />
             </Route>
           </Switch>
         </Router>

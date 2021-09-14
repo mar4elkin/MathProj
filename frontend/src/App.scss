@@ -1,8 +1,21 @@
 /* css vars start */
-$nav-main-color-white: #3DB2FF;
+$main-color-white: #3DB2FF;
+$main-text-color: #000000;
+$main-text-color-second: #FFFFFFFF;
+$main-submit-color: #66DE93;
+
+$nav-main-color-white: $main-color-white;
 $nav-second-color-white: #FFFFFFFF;
-$prev-text-colors: #000000;
+
+$prev-text-colors-white: $main-text-color;
+
+$auth-text-colors: $main-text-color-second;
+$auth-input-colors: $main-text-color-second;
 /* css vars end */
+
+/* Button start */
+
+/* Button end */
 
 /* NavBar start */
 
@@ -81,7 +94,7 @@ $prev-text-colors: #000000;
 .prev-page-big-block > div h1, p {
   font-family: 'Rubik', sans-serif;
   margin: 0px;
-  color: $prev-text-colors;
+  color: $prev-text-colors-white;
 }
 
 .prev-page-big-block > div h1 {
@@ -120,7 +133,7 @@ $prev-text-colors: #000000;
   font-family: 'Rubik', sans-serif;
   margin: 0px;
   text-align: center;
-  color: $prev-text-colors;
+  color: $prev-text-colors-white;
 }
 
 .prev-page-card-block > img {
@@ -137,3 +150,84 @@ $prev-text-colors: #000000;
 }
 
 /* PreviewPage end */
+
+/* Auth start */
+.auth-block-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.auth-block {
+  background: #3DB2FF;
+  border-radius: 20px;
+  border: 1px solid $main-color-white;
+  width: 504px;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.auth-reg {
+  height: 554px;
+}
+
+.auth-log {
+  height: 422px;
+}
+
+.auth-block img {
+  width: 24px;
+  height: 24px;
+  padding: 10px;
+}
+
+.auth-input, .auth-block p, h1 {
+  color: $auth-text-colors;
+  font-family: 'Rubik', sans-serif;
+}
+
+.auth-block h1, p {
+  font-weight: bold;
+  margin: 0px;
+  text-align: center;
+}
+
+.auth-input {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.auth-input > input {
+  height: 28px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid $auth-input-colors;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-input > p {
+  font-size: 14px;
+  font-weight: lighter;
+  text-align: left;
+}
+
+.auth-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 343px;
+}
+
+.auth-block-container-in-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Auth end */
