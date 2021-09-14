@@ -3,11 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import PreviewPage from "./Views/PreviewPage";
+import AuthPage from "./Views/AuthPage";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+    <Switch>
+      <Route exact path="/">
+        <PreviewPage />
+      </Route>
+      <Route path="/registration">
+        <AuthPage isRegistration={true} />
+      </Route>
+      <Route path="/login">
+        <AuthPage isRegistration={false} />
+      </Route>
+    </Switch>
+  </Router>,
   document.getElementById('root')
 );
 

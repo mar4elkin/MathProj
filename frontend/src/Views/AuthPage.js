@@ -2,18 +2,51 @@ import React from "react";
 import AuthClose from "../Assets/AuthClose.png";
 import Input from "../Components/Auth/Input";
 import {SubmitAuthButton} from "../Components/Button";
+import { Redirect } from 'react-router-dom'
 
 export default class AuthPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      redirect: false
+    }
+  }
+
+  componentDidMount(){
+    if (this.props.isRegistration === true) {
+      document.title = "Регистрация"
+    } else {
+      document.title = "Войти"
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.isRegistration === true) {
+      document.title = "Регистрация"
+    } else {
+      document.title = "Войти"
+    }
+  }
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/' />
+    }
   }
 
   render() {
     if (this.props.isRegistration === true) {
       return (
-        <div className="auth-block-container">
+        <div className="auth-block-container auth-reg-slide-in-blurred-top">
           <div className="auth-block auth-reg">
-            <img src={AuthClose} />
+            {this.renderRedirect()}
+            <img src={AuthClose} onClick={this.setRedirect}/>
             <h1>Регистрация</h1>
             <div className="auth-input-container">
               <div className="auth-block-container-in-row">
@@ -22,21 +55,25 @@ export default class AuthPage extends React.Component {
                   id="name"
                 />
                 <Input
-                  title="Имя"
+                  title="Фамилия"
                   id="name"
                 />
               </div>
               <Input
-                title="Имя"
+                title="Логин"
                 id="name"
               />
               <Input
-                title="Имя"
+                title="Почта"
                 id="name"
               />
               <Input
-                title="Имя"
+                title="Пароль"
                 id="name"
+              />
+              <SubmitAuthButton
+                title="Зарегестрироваться"
+                width="159px"
               />
             </div>
           </div>
@@ -44,21 +81,23 @@ export default class AuthPage extends React.Component {
       );
     } else {
       return (
-        <div className="auth-block-container">
+        <div className="auth-block-container auth-log-slide-in-blurred-top">
           <div className="auth-block auth-log">
-            <img src={AuthClose} />
+            {this.renderRedirect()}
+            <img src={AuthClose} onClick={this.setRedirect}/>
             <h1>Войти</h1>
             <div className="auth-input-container">
               <Input
-                title="Имя"
+                title="Логин или Почта"
                 id="name"
               />
               <Input
-                title="Имя"
+                title="Пароль"
                 id="name"
               />
               <SubmitAuthButton
-                title="submit"
+                title="Войти"
+                width="61px"
               />
             </div>
           </div>

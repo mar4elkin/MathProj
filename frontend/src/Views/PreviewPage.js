@@ -8,6 +8,7 @@ import school from '../Assets/School.png';
 export default class TestPage extends React.Component {
   constructor(props) {
     super(props);
+    document.title = "MathProjMVP"
   }
 
   render() {
@@ -21,7 +22,7 @@ export default class TestPage extends React.Component {
       "Nullam efficitur diam et urna venenatis. ac rutrum justo egestas."
 
     return (
-      <div>
+      <div className="fade-in-top">
         <BigBlock
           className="prev-page-big-block"
           heading={firstBlockHeading}
