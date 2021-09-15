@@ -16,6 +16,7 @@ export class SubmitAuthButton extends Button {
         <button
           className="auth-submit-button"
           style={{width: this.props.width}}
+          onClick={this.props.onclick}
         >
           {this.props.title}
         </button>

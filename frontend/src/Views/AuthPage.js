@@ -7,9 +7,18 @@ import { Redirect } from 'react-router-dom'
 export default class AuthPage extends React.Component {
   constructor(props) {
     super(props);
+    this.handler = this.handler.bind(this)
     this.state = {
-      redirect: false
+      redirect: false,
     }
+  }
+
+  handler(sname, value) {
+    this.setState(prevstate => {
+      const newState = { ...prevstate };
+      newState[sname] = value;
+      return newState;
+    })
   }
 
   componentDidMount(){
@@ -52,24 +61,29 @@ export default class AuthPage extends React.Component {
               <div className="auth-block-container-in-row">
                 <Input
                   title="Имя"
-                  id="name"
+                  sname="first_name"
+                  handler={this.handler}
                 />
                 <Input
                   title="Фамилия"
-                  id="name"
+                  sname="last_name"
+                  handler={this.handler}
                 />
               </div>
               <Input
                 title="Логин"
-                id="name"
+                sname="username"
+                handler={this.handler}
               />
               <Input
                 title="Почта"
-                id="name"
+                sname="email"
+                handler={this.handler}
               />
               <Input
                 title="Пароль"
-                id="name"
+                sname="password"
+                handler={this.handler}
               />
               <SubmitAuthButton
                 title="Зарегестрироваться"
@@ -88,12 +102,14 @@ export default class AuthPage extends React.Component {
             <h1>Войти</h1>
             <div className="auth-input-container">
               <Input
-                title="Логин или Почта"
-                id="name"
+                title="Почта"
+                sname="email"
+                handler={this.handler}
               />
               <Input
                 title="Пароль"
-                id="name"
+                sname="password"
+                handler={this.handler}
               />
               <SubmitAuthButton
                 title="Войти"
