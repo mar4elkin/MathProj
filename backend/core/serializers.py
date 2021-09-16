@@ -1,12 +1,34 @@
+from django.contrib.auth import base_user
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
+from core.models import CustomUser
+
+class CustomUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CustomUser
+        fields = [
+            'profile_image', 
+            'rank', 
+            'level_xp',
+        ]
+
 
 class UserSerializer(serializers.ModelSerializer):
 
+    customuser = CustomUserSerializer(required=True)
+
     class Meta:
         model = User
-        fields = ('username',)
+        fields = [
+            'id',
+            'username',
+            'email',
+            'first_name', 
+            'last_name',
+            'customuser'
+        ]
 
 
 class UserSerializerWithToken(serializers.ModelSerializer):

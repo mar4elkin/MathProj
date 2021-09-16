@@ -4,7 +4,8 @@ from rest_framework import permissions, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer, UserSerializerWithToken
+from .serializers import CustomUserSerializer, UserSerializerWithToken, UserSerializer
+from core.models import CustomUser
 
 
 @api_view(['GET'])
@@ -12,8 +13,15 @@ def current_user(request):
     """
     Determine the current user by their token, and return their data
     """
+
+    # serializer = CustomUserSerializer(
+    #     CustomUser.objects.get(user=request.user)
+    # )
+
+    serializer = UserSerializer(
+        request.user
+    )
     
-    serializer = UserSerializer(request.user)
     return Response(serializer.data)
 
 
