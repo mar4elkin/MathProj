@@ -1,35 +1,35 @@
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from rest_framework import permissions, status
+from rest_framework import permissions, status, generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import CustomUserSerializer, UserSerializerWithToken, UserSerializer
-from core.models import CustomUser
+from rest_framework.permissions import IsAuthenticated
+from .serializers import UserSerializerWithToken, UserSerializer, ChangePasswordSerializer, UpdateUserSerializer
 
 
 @api_view(['GET'])
 def current_user(request):
-    """
-    Determine the current user by their token, and return their data
-    """
 
-    # serializer = CustomUserSerializer(
-    #     CustomUser.objects.get(user=request.user)
-    # )
-
-    serializer = UserSerializer(
-        request.user
-    )
-    
+    serializer = UserSerializer(request.user)    
     return Response(serializer.data)
 
 
+class ChangePasswordView(generics.UpdateAPIView):
+
+    queryset = User.objects.all()
+    permission_classes = (IsAuthenticated,)
+    serializer_class = ChangePasswordSerializer
+
+
+class UpdateProfileView(generics.UpdateAPIView):
+
+    queryset = User.objects.all()
+    permission_classes = (IsAuthenticated,)
+    serializer_class = UpdateUserSerializer
+
+
 class UserList(APIView):
-    """
-    Create a new user. It's called 'UserList' because normally we'd have a get
-    method here too, for retrieving a list of all User objects.
-    """
 
     permission_classes = (permissions.AllowAny,)
 

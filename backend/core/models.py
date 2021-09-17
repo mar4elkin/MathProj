@@ -44,16 +44,16 @@ class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_image = models.ImageField(upload_to='user_images', null=True, blank=True)
     rank = models.ManyToManyField(Rank, blank=True, default=None)
-    level_xp = models.IntegerField(null=True, blank=True)
+    level_xp = models.IntegerField(null=True, blank=True, default=0)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             CustomUser.objects.create(user=instance)
 
-    @receiver(post_save, sender=User)
-    def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
+    # @receiver(post_save, sender=User)
+    # def save_user_profile(sender, instance, **kwargs):
+    #     instance.profile.save()
     
     def __str__(self):
         return str(self.user)

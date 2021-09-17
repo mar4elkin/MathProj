@@ -8,7 +8,7 @@ export default class NavBar extends React.Component {
   }
 
   render() {
-    if (this.props.isAuth === true) {
+    if (this.props.isAuth === false) {
       return (
         <header className="nav-bar">
           <div className="nav-bar-container">

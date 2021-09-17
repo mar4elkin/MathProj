@@ -17,11 +17,14 @@ export default class Input extends React.Component {
   }
 
   render() {
+    if (this.props.type === '') {
+      this.props.type = 'text'
+    }
     return (
       <div className="auth-input">
         <p>{this.props.title}</p>
         <input
-          type="text"
+          type={this.props.type}
           value={this.state.inputValue}
           onChange={this.handleChange}
 
