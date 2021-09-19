@@ -1,16 +1,16 @@
 <template>
   <div class="nav-bar">
     <div class="nav-bar-container">
-      <router-link to="/">
+      <router-link to="/about">
         <h1>MathProjMVP</h1>
       </router-link>
       <nav class="nav-bar-navigation">
         <ul class="nav-bar-list">
           <li>
-            <router-link to="/registration">Регистрация</router-link>
+            <router-link to="/singup">Регистрация</router-link>
           </li>
           <li>
-            <router-link class="nav-bar-bordered" to="/login">Войти</router-link>
+            <router-link class="nav-bar-bordered" to="/singin">Войти</router-link>
           </li>
         </ul>
       </nav>

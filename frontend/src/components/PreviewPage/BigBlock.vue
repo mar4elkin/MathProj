@@ -4,10 +4,10 @@
       <h1>{{heading}}</h1>
       <TextSplit :text=text />
     </div>
-    <img :src=image alt="" />
+    <img :src=image alt="" :style="imgStyle" />
   </div>
   <div v-else class="prev-page-big-block">
-    <img :src=image alt="" />
+    <img :src=image alt="" :style="imgStyle" />
     <div>
       <h1>{{heading}}</h1>
       <TextSplit :text=text />
@@ -36,10 +36,19 @@
       img_align_right: {
         type: Boolean,
         default: false
+      },
+      img_size: {
+        type: Object,
+        default: null
       }
     },
     data() {
       return {
+      }
+    },
+    methods: {
+      imgStyle() {
+        return 'height:' + this.img_size.height + '; width' + this.img_size.width + ';'
       }
     }
   }
@@ -71,10 +80,5 @@
     font-size: 24px;
     font-weight: lighter;
     text-align: start;
-  }
-
-  .prev-page-big-block > img {
-    height: 132px;
-    width: 146px;
   }
 </style>

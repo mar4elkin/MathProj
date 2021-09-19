@@ -1,21 +1,51 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import Home from '../views/Home.vue'
 
 const routes = [
   {
+    path: '/about',
+    name: 'About',
+    meta: {
+      title: {
+        en: 'About',
+        ru: 'О проекте'
+      }
+    },
+    component: () => import('../views/PreviewPage.vue')
+  },
+  {
     path: '/',
     name: 'Home',
-    component: () => import('../views/PreviewPage.vue')
-
+    meta: {
+      title: {
+        en : 'Home',
+        ru: 'Главная'
+      }
+    }
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
+  {
+    path: '/singup',
+    name: 'Sing Up',
+    props: { default: true, is_singup: true},
+    meta: {
+      title: {
+        en: 'Sing Up',
+        ru: 'Регистрация'
+      }
+    },
+    component: () => import('../views/AuthPage.vue'),
+  },
+  {
+    path: '/singin',
+    name: 'Sing In',
+    props: { default: true, is_singup: false},
+    meta: {
+      title: {
+        en: 'Sing In',
+        ru: 'Авторизация'
+      }
+    },
+    component: () => import('../views/AuthPage.vue')
+  }
 ]
 
 const router = createRouter({

@@ -5,10 +5,18 @@
 
 <script>
 import NavBar from './components/NavBar'
+
 export default {
   components: { NavBar },
-  name: 'App'
+  name: 'App',
+  watch: {
+    '$route' (to, from) {
+      let userLang = navigator.language || navigator.userLanguage
+      document.title = to.meta.title[userLang.split('-')[0]] || 'MathProjMVP'
+    }
+  },
 }
+
 </script>
 
 <style lang="scss">
@@ -19,6 +27,7 @@ export default {
     padding: 0;
     margin: 0;
     width: 100%;
+    background: $main-bg-color;
   }
 
   body {

@@ -5,6 +5,7 @@
       :text=BlockText
       :image=sqrt
       :img_align_right=true
+      :img_size=img_size_first
     ></BigBlock>
     <div class="prev-page-card">
       <CardBlock
@@ -28,6 +29,7 @@
       :text=BlockText
       :image=school
       :img_align_right=false
+      :img_size=img_size_second
     ></BigBlock>
   </div>
 </template>
@@ -55,7 +57,15 @@
           "Nullam efficitur diam et urna venenatis. ac rutrum justo egestas.",
         sqrt: sqrt,
         circleOk: circleOk,
-        school: school
+        school: school,
+        img_size_first: {
+          height: '132px',
+          width: '146px'
+        },
+        img_size_second: {
+          width:'146px',
+          height: '105,6px'
+        }
       }
     }
   }
@@ -63,8 +73,9 @@
 
 <style lang="scss">
   .prv-page {
-    margin-top: 20px;
+    margin-top: 35px;
   }
+
   .prev-page-card {
     display: flex;
     flex-direction: row;
