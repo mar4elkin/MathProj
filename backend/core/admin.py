@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import *
+from core.models import *
 
-admin.site.register(CustomUser)
-admin.site.register(Achievements)
+admin.site.register(Achievement)
 admin.site.register(Rank)

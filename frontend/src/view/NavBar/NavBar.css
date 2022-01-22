@@ -1,0 +1,16 @@
+/* nvb - navbar */
+.nvb-wrapper {
+    background-color: #3DB2FF;
+}
+
+.nvb-wrapper h1, h2, h3, h4, h5, h6, a, pre, span {
+    color: #FFFFFF !important;
+}
+
+.nvb-wrapper span {
+    font-size: 24px !important;
+}
+
+.nvb-wrapper a {
+    font-size: 18px !important;
+}
