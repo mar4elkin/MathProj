@@ -1,16 +1,22 @@
 /* nvb - navbar */
-.nvb-wrapper {
+.nvb {
     background-color: #3DB2FF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 65px;
 }
 
-.nvb-wrapper h1, h2, h3, h4, h5, h6, a, pre, span {
+.nvb h1, h2, h3, h4, h5, h6, a, pre, span {
     color: #FFFFFF !important;
+    text-decoration: none;
 }
 
-.nvb-wrapper span {
+.nvb span {
     font-size: 24px !important;
 }
 
-.nvb-wrapper a {
+.nvb-links a{
+    padding: 10px;
     font-size: 18px !important;
 }

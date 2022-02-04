@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './view/NavBar/NavBar';
 import { store } from './app/store'
 import { Provider } from 'react-redux'

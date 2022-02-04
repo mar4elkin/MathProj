@@ -1,8 +1,9 @@
-import React from "react";
 import './NavBar.css';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+
 import Guest from '../GuestPage/Guest';
 import Home from '../HomePage/Home';
+import Auth from '../AuthPage/Auth';
 
 import {
   BrowserRouter as Router,
@@ -11,23 +12,17 @@ import {
   Link
 } from "react-router-dom";
 
-import { 
-  Navbar as BNavbar,
-  Row,
-  Nav,
-  Container
-} from 'react-bootstrap';
-
 function NavBarUser() {
   return (
-    <div>
-      <BNavbar className="nvb-wrapper" expand="lg" >
-        <Container>
-          <Row>
-            <BNavbar.Brand>MathProj MVP</BNavbar.Brand>
-          </Row>
-        </Container>
-      </BNavbar>
+    <div className="main">
+      <div className="nvb">
+        <Link to="/">
+          <span>MathProjMvp</span>
+        </Link>
+        <div className="nvb-links">
+          <Link to="/">Выйти</Link>
+        </div>
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
@@ -35,26 +30,20 @@ function NavBarUser() {
   );
 }
 
-function NavBarGuest() {
+function NavBarGuest(props) {
   return (
-    <div>
-      <BNavbar className="nvb-wrapper" expand="lg" >
-        <Container>
-          <Row>
-            <BNavbar.Brand>MathProj MVP</BNavbar.Brand>
-          </Row>
-          <Row>
-            <BNavbar.Toggle aria-controls="basic-navbar-nav" />
-            <BNavbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
-                <Link to="/" className="nav-link" >Регистрация</Link>
-                <Link to="/" className="nav-link" >Войти</Link>
-              </Nav>
-            </BNavbar.Collapse>
-          </Row>
-        </Container>
-      </BNavbar>
+    <div className="main">
+      <div className="nvb">
+        <Link to="/">
+          <span>MathProjMvp</span>
+        </Link>
+        <div className="nvb-links">
+          <Link to="/">Зарегистрироваться</Link>
+          <Link to="/login">Войти</Link>
+        </div>
+      </div>
       <Routes>
+        <Route path='/login' element={<Auth isLoginPage={false} />} />
         <Route path="/" element={<Guest />} />
       </Routes>
     </div>
@@ -62,13 +51,16 @@ function NavBarGuest() {
 }
 
 export default function NavBar() {
+  document.title = 'MP mvp \u03b1 0.0.1'
   const isLoggedIn = useSelector((state) => state.user.isUserAuth);
   let NavBarContainer;
+
   if (isLoggedIn) {
     NavBarContainer = <NavBarUser/>
   } else {
     NavBarContainer = <NavBarGuest/>
   }
+  
   return (
     <Router>
       {NavBarContainer}
