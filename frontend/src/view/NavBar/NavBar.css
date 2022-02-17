@@ -8,15 +8,15 @@
 }
 
 .nvb h1, h2, h3, h4, h5, h6, a, pre, span {
-    color: #FFFFFF !important;
+    color: #FFFFFF;
     text-decoration: none;
 }
 
 .nvb span {
-    font-size: 24px !important;
+    font-size: 24px;
 }
 
 .nvb-links a{
     padding: 10px;
-    font-size: 18px !important;
+    font-size: 18px;
 }

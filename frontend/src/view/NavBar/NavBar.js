@@ -38,12 +38,13 @@ function NavBarGuest(props) {
           <span>MathProjMvp</span>
         </Link>
         <div className="nvb-links">
-          <Link to="/">Зарегистрироваться</Link>
+          <Link to="/registration">Зарегистрироваться</Link>
           <Link to="/login">Войти</Link>
         </div>
       </div>
       <Routes>
-        <Route path='/login' element={<Auth isLoginPage={false} />} />
+        <Route path='/login' element={<Auth isLoginPage={true} />} />
+        <Route path='/registration' element={<Auth isLoginPage={false} />} />
         <Route path="/" element={<Guest />} />
       </Routes>
     </div>
