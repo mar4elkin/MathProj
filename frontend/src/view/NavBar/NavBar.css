@@ -7,7 +7,7 @@
     height: 65px;
 }
 
-.nvb h1, h2, h3, h4, h5, h6, a, pre, span {
+.nvb, h1, h2, h3, h4, h5, h6, a, pre, span {
     color: #FFFFFF;
     text-decoration: none;
 }

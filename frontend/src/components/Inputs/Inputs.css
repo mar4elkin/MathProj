@@ -1,4 +1,8 @@
-.input input {
+.basic-input {
     border-radius: 5px;
+    width: 100%;
+}
+
+.input-text-over {
     width: 100%;
 }

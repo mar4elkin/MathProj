@@ -1,7 +1,7 @@
-import Basic from "./Basic";
+import Input from "./Input";
 import PropTypes from 'prop-types';
 
-export class TextOver extends Basic {
+export class InputTextOver extends Input {
   
   static propTypes = {
     text: PropTypes.string,
@@ -12,10 +12,9 @@ export class TextOver extends Basic {
     return (
       <div className="input-text-over">
         <span style={{color: `${this.props.color}`}}>{this.props.text}</span>
-        <Basic 
+        <Input 
           borderColor={this.props.color} 
           handler={this.props.handler}
-          width={this.props.width}
           height={this.props.height}
         />
       </div>

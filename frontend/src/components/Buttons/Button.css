@@ -1,0 +1,12 @@
+.basic-button {
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 0.4px solid #FFFFFF;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: white;
+}

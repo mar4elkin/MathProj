@@ -1,5 +1,7 @@
+import { Test } from "../../components/TestView/Test";
+
 export default function Home() {
   return (
-    <h1>Home</h1>
+    <Test  />
   );
 }
