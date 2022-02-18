@@ -8,6 +8,8 @@ export default class Basic extends React.Component {
     handler: PropTypes.func,
     borderColor: PropTypes.string,
     height: PropTypes.string,
+    value: PropTypes.string,
+    inputType: PropTypes.string
   };  
 
   render() {
@@ -18,7 +20,13 @@ export default class Basic extends React.Component {
     }
 
     return (
-      <input className="basic-input" style={inputStyles} />
+      <input 
+        className="basic-input" 
+        style={inputStyles} 
+        onChange={this.props.handler} 
+        value={this.props.value}
+        type={this.props.inputType} 
+      />
     );
   };
 } 

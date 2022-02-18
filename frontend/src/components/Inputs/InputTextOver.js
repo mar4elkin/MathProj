@@ -16,6 +16,8 @@ export class InputTextOver extends Input {
           borderColor={this.props.color} 
           handler={this.props.handler}
           height={this.props.height}
+          value={this.props.value}
+          inputType={this.props.inputType} 
         />
       </div>
     );
