@@ -1,5 +1,6 @@
 import './NavBar.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../redux/userSlice'
 
 import Guest from '../GuestPage/Guest';
 import Home from '../HomePage/Home';
@@ -9,22 +10,55 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
+  useNavigate
 } from "react-router-dom";
 
 function NavBarUser() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const backendUrl = useSelector(state => state.user.backendUrl);
+
+  function handleUserLogout() {
+    let requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      redirect: 'follow'
+    };
+
+    fetch(`${backendUrl}/rest-auth/logout/`, requestOptions)
+    .then(response => {
+      if (response.status == 200) {
+        dispatch(logout())
+        navigate('/')
+      }
+    })
+    .catch(error => console.log('error', error));
+  }
+
   return (
     <div className="main">
       <div className="nvb">
-        <Link to="/">
-          <span>MathProjMvp</span>
-        </Link>
+        <div className="nvb-links authd-user">
+          <Link to="/">
+            <span>MathProjMvp</span>
+          </Link>
+          <Link to="/catalog">Каталог тестов</Link>
+          <Link to="/my-tests">Мои задачи</Link>
+          <Link to="/rating">Рейтинг</Link>
+        </div>
         <div className="nvb-links">
-          <Link to="/">Выйти</Link>
+          <Link to="/" onClick={() => handleUserLogout()} >Выйти</Link>
         </div>
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<Home />} />
+        <Route path="/catalog" element={<Home />} />
+        <Route path="/my-tests" element={<Home />} />
+        <Route path="/rating" element={<Home />} />
       </Routes>
     </div>
   );

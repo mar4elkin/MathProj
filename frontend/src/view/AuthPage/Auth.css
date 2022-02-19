@@ -12,6 +12,10 @@
     margin-right: auto;
 }
 
+.auth-base-form h1 {
+    color: white;
+}
+
 .auth-base-form-inputs {
     display: flex;
     flex-direction: column;

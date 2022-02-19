@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import './HtmlBlockWrapper.css';
 
-export default class HtmlBlockWrapper {
+export default class HtmlBlockWrapper extends React.Component {
 
   static propTypes = {
     containerClass: PropTypes.string,

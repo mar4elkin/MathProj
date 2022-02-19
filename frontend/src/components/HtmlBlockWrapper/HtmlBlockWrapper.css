@@ -1,0 +1,40 @@
+.html-block-wrapper {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.block-description h1, h2, h3, h4 {
+    color:black;
+    margin: 0px;
+}
+
+.block-description h3 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.block-description h4 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.block-description {
+    height: 50px;
+    width: 100%;
+    margin: 20px;
+}
+
+.block-tests {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.block-tests > div {
+    margin: 20px;
+}
