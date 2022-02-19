@@ -187,7 +187,7 @@ function Registration() {
 
       fetch(`${backendUrl}/rest-auth/registration/`, requestOptions)
       .then(response => {
-        if (response.status == 200) {
+        if (response.status == 201) {
           navigate('/login')
         }
       })
