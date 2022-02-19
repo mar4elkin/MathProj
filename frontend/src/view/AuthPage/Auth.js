@@ -165,16 +165,16 @@ function Registration() {
           password1: password,
           password2: password,
           first_name: name,
-          last_name: secondName
+          second_name: secondName
         }),
         redirect: 'follow'
       };
 
       fetch(`${backendUrl}/rest-auth/registration/`, requestOptions)
-      .then(response => response.text())
-      .then(result => {
-        console.log(result)
-        navigate('/login')
+      .then(response => {
+        if (response.status == 200) {
+          navigate('/login')
+        }
       })
       .catch(error => console.log('error', error));
     
