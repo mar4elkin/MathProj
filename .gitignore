@@ -2,3 +2,4 @@ __pycache__
 db.sqlite3
 node_modules
 math-proj-env
+media

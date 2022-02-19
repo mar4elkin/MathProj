@@ -7,12 +7,13 @@ from rest_auth.registration.serializers import RegisterSerializer as RARegisterS
 class CustomRegisterSerializer(RARegisterSerializer):
     first_name = serializers.CharField(required=False)
     second_name = serializers.CharField(required=False)
+    profile_image = serializers.ImageField(required=False)
 
     def custom_signup(self, request, user):
         user.first_name = self.validated_data.get('first_name', '')
         user.second_name = self.validated_data.get('second_name', '')
-
-        user.save(update_fields=['first_name', 'second_name'])
+        user.profile_image = self.validated_data.get('profile_image', '')
+        user.save(update_fields=['first_name', 'second_name', 'profile_image'])
 
 class RankSerializer(serializers.ModelSerializer):
     class Meta:
