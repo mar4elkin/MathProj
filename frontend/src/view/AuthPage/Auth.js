@@ -5,7 +5,7 @@ import './Auth.css';
 import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { login } from './counterSlice';
+import { login } from '../../redux/userSlice'
 
 /**
  * 
@@ -75,6 +75,8 @@ function BaseForm(props) {
 
 function Login() {
   const backendUrl = useSelector(state => state.user.backendUrl);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -102,8 +104,15 @@ function Login() {
       };
 
       fetch(`${backendUrl}/rest-auth/login/`, requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
+      .then(response => response.json())
+      .then(result => {
+        if (result.key) {
+          dispatch(login(String(result.key)))
+          navigate('/')
+        } else if (result.non_field_errors) {
+          alert(result.non_field_errors[0])
+        }
+      })
       .catch(error => console.log('error', error));
     } else {
       validationResult.forEach(el => {
