@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../../redux/userSlice'
+import Identicon from 'identicon.js';
 
 /**
  * 
@@ -154,6 +155,19 @@ function Registration() {
     ) 
 
     if (validationResult.length == 0) {
+
+      String.prototype.hexEncode = function(){
+          let hex, i;
+          let result = "";
+          for (i=0; i<this.length; i++) {
+              hex = this.charCodeAt(i).toString(16);
+              result += ("000"+hex).slice(-4);
+          }
+          return result
+      }
+
+      let image = new Identicon(email.hexEncode(), 200).toString()
+
       let requestOptions = {
         method: 'POST',
         headers: {
@@ -165,7 +179,8 @@ function Registration() {
           password1: password,
           password2: password,
           first_name: name,
-          second_name: secondName
+          second_name: secondName,
+          profile_image: image
         }),
         redirect: 'follow'
       };
