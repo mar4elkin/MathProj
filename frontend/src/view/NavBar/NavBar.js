@@ -79,7 +79,7 @@ function NavBarUser() {
         </div>
         <div className="nvb-links">
           <Link to="/profile">
-            <img src={userData.profile_image} alt='profile_image' />
+            <img src={userData.profile_image} alt='img' />
           </Link>
           <Link to="/" onClick={() => handleUserLogout()} >Выйти</Link>
         </div>

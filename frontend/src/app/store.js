@@ -5,9 +5,11 @@ import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 
 import userReducer from '../redux/userSlice';
+import messageReducer from '../redux/messageSlice';
 
 const reducers = combineReducers({
   user: userReducer,
+  message: messageReducer
 });
 
 const persistConfig = {

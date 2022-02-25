@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../../redux/userSlice'
+import { setMessageDanger, setMessageSucess } from '../../redux/messageSlice';
 import Identicon from 'identicon.js';
 
 /**
@@ -113,10 +114,16 @@ function Login() {
           )
           navigate('/')
         } else if (result.non_field_errors) {
-          alert(result.non_field_errors[0])
+          dispatch(
+            setMessageDanger(result.non_field_errors[0])
+          );
         }
       })
-      .catch(error => console.log('error', error));
+      .catch(error => {
+        dispatch(
+          setMessageDanger(error)
+        );
+      });
     } else {
       validationResult.forEach(el => {
         alert(el);
