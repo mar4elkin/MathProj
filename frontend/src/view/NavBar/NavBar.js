@@ -1,6 +1,7 @@
 import './NavBar.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../redux/userSlice'
+import React, { useState, useEffect } from 'react';
 
 import Guest from '../GuestPage/Guest';
 import Home from '../HomePage/Home';
@@ -18,6 +19,23 @@ function NavBarUser() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const backendUrl = useSelector(state => state.user.backendUrl);
+  const token = useSelector(state => state.user.token);
+  const [userData, setUserData] = useState({});
+
+  async function getUserInfo() {
+    let requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`
+      },
+      redirect: 'follow'
+    };
+
+    const response = await fetch(`${backendUrl}/rest-auth/user/`, requestOptions);
+    const result = await response.json();
+    return result;
+  }
 
   function handleUserLogout() {
     let requestOptions = {
@@ -38,6 +56,16 @@ function NavBarUser() {
     .catch(error => console.log('error', error));
   }
 
+  useEffect(() => {
+    getUserInfo()
+    .then(result => {
+      setUserData(result)
+    })
+
+  }, []);
+
+  console.log(userData)
+
   return (
     <div className="main">
       <div className="nvb">
@@ -50,6 +78,9 @@ function NavBarUser() {
           <Link to="/rating">Рейтинг</Link>
         </div>
         <div className="nvb-links">
+          <Link to="/profile">
+            <img src={userData.profile_image} alt='profile_image' />
+          </Link>
           <Link to="/" onClick={() => handleUserLogout()} >Выйти</Link>
         </div>
       </div>

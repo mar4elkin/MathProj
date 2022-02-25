@@ -108,7 +108,9 @@ function Login() {
       .then(response => response.json())
       .then(result => {
         if (result.key) {
-          dispatch(login(String(result.key)))
+          dispatch(
+            login(String(result.key))
+          )
           navigate('/')
         } else if (result.non_field_errors) {
           alert(result.non_field_errors[0])

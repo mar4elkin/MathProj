@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   token: '',
   isUserAuth: false,
-  backendUrl: 'http://127.0.0.1:8000/api/v1'
+  backendUrl: 'http://127.0.0.1:8000/api/v1',
 }
 
 export const userSlice = createSlice({
