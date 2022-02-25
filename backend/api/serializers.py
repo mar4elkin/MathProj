@@ -70,13 +70,14 @@ class AchievementSerializer(serializers.ModelSerializer):
         ]
 
 class UserSerializer(serializers.ModelSerializer):
+    rank = RankSerializer()
     class Meta:
         model = CustomUser
         fields = [
             'id', 
             'email', 
             'first_name', 
-            'last_name', 
+            'second_name', 
             'date_of_birth',
             'profile_image',
             'rank',
